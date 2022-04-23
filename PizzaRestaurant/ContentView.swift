@@ -9,6 +9,8 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
+    @State var showOrderSheet = false
+    
     var body: some View {
         NavigationView {
             List {
@@ -18,13 +20,16 @@ struct ContentView: View {
             .navigationBarItems(
                 trailing: Button(
                     action: {
-                        print("Open order sheet")
+                        showOrderSheet = true
                     }, label: {
                         Image(systemName: "plus.circle")
                             .imageScale(.large)
                     }
                 )
             )
+            .sheet(isPresented: $showOrderSheet) {
+                OrderSheetView()
+            }
         }
     }
 }

@@ -15,6 +15,7 @@
 		7B174AD82814566300557FF7 /* PizzaRestaurant.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7B174AD62814566300557FF7 /* PizzaRestaurant.xcdatamodeld */; };
 		7B9CE72C2814848B00FF9B31 /* Order+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9CE72A2814848B00FF9B31 /* Order+CoreDataClass.swift */; };
 		7B9CE72D2814848B00FF9B31 /* Order+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9CE72B2814848B00FF9B31 /* Order+CoreDataProperties.swift */; };
+		7B9CE72F2814875300FF9B31 /* OrderSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9CE72E2814875300FF9B31 /* OrderSheetView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		7B174AD72814566300557FF7 /* PizzaRestaurant.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PizzaRestaurant.xcdatamodel; sourceTree = "<group>"; };
 		7B9CE72A2814848B00FF9B31 /* Order+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Order+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7B9CE72B2814848B00FF9B31 /* Order+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Order+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7B9CE72E2814875300FF9B31 /* OrderSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSheetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 			children = (
 				7B174ACB2814566200557FF7 /* PizzaRestaurantApp.swift */,
 				7B174ACD2814566200557FF7 /* ContentView.swift */,
+				7B9CE72E2814875300FF9B31 /* OrderSheetView.swift */,
 				7B174ACF2814566300557FF7 /* Assets.xcassets */,
 				7B174AD42814566300557FF7 /* Persistence.swift */,
 				7B174AD62814566300557FF7 /* PizzaRestaurant.xcdatamodeld */,
@@ -149,6 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B9CE72F2814875300FF9B31 /* OrderSheetView.swift in Sources */,
 				7B9CE72D2814848B00FF9B31 /* Order+CoreDataProperties.swift in Sources */,
 				7B174AD52814566300557FF7 /* Persistence.swift in Sources */,
 				7B174ACE2814566200557FF7 /* ContentView.swift in Sources */,

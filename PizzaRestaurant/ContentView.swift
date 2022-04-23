@@ -15,6 +15,16 @@ struct ContentView: View {
                 Text("Sample Order")
             }
             .navigationTitle("My Orders")
+            .navigationBarItems(
+                trailing: Button(
+                    action: {
+                        print("Open order sheet")
+                    }, label: {
+                        Image(systemName: "plus.circle")
+                            .imageScale(.large)
+                    }
+                )
+            )
         }
     }
 }

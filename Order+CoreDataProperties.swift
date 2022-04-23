@@ -17,8 +17,8 @@ extension Order {
     }
 
     @NSManaged public var id: UUID?
-    @NSManaged public var pizzaType: String?
-    @NSManaged public var tableNumber: String?
+    @NSManaged public var pizzaType: String
+    @NSManaged public var tableNumber: String
     @NSManaged public var status: String
     
     var orderStatus: Status {

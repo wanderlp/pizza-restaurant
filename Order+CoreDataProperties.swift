@@ -9,9 +9,8 @@
 import Foundation
 import CoreData
 
-
 extension Order: Identifiable {
-
+    
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Order> {
         return NSFetchRequest<Order>(entityName: "Order")
     }
@@ -19,11 +18,17 @@ extension Order: Identifiable {
     @NSManaged public var id: UUID?
     @NSManaged public var pizzaType: String
     @NSManaged public var tableNumber: String
-    @NSManaged public var status: String
+    @NSManaged public var status: Status
     @NSManaged public var numberOfSlices: Int16
 
 }
 
 extension Order : Identifiable {
 
+}
+
+enum Status: String {
+    case pending: "Pending"
+    case preparing: "Preparing"
+    case completed: "Completed"
 }

@@ -16,7 +16,7 @@ extension Order: Identifiable {
         return NSFetchRequest<Order>(entityName: "Order")
     }
 
-    @NSManaged public var id: UUID
+    @NSManaged public var id: UUID?
     @NSManaged public var pizzaType: String
     @NSManaged public var tableNumber: String
     @NSManaged public var status: String

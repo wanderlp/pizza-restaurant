@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-extension Order {
+extension Order: Identifiable {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Order> {
         return NSFetchRequest<Order>(entityName: "Order")

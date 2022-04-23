@@ -10,12 +10,18 @@ import CoreData
 struct PersistenceController {
     static let shared = PersistenceController()
 
+    // The preview property allows us to use the CoreData
+    // functionality inside previews simulators.
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
         for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+            let newItem = Order(context: viewContext)
+            newItem.status = "pending"
+            newItem.id = UUID()
+            newItem.tableNumber = "12"
+            newItem.pizzaType = "Margherita"
+            newItem.numberOfSlices = 4
         }
         do {
             try viewContext.save()
@@ -28,8 +34,20 @@ struct PersistenceController {
         return result
     }()
 
+    // The container property is the heart of the PersistenceController,
+    // wich performs many different operations for us in the background
+    // when we store and call data. Most importantly, the container
+    // allow us to access the so-called viewContext, which servers as
+    // an in-memory scratchpad where objects are created, fetched,
+    // updated, deleted, and saved bvack to the persistent store of the
+    // device where the app runs on.
     let container: NSPersistentContainer
 
+    // The container gets initialized within the PersistenceController's
+    // init function. In this, the container property gets assigned to an
+    // NSPersistentContainer instance. We need to use the name of our
+    // ".xcdatamodel" file, which is "Shared" (or "PizzaRestaurante" when
+    // you created a mere iOS App Project), as the "name" argument.
     init(inMemory: Bool = false) {
         container = NSPersistentContainer(name: "PizzaRestaurant")
         if inMemory {

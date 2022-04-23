@@ -27,3 +27,9 @@ extension Order {
 extension Order : Identifiable {
 
 }
+
+enum Status: String {
+    case pending = "Pending"
+    case preparing = "Preparing"
+    case completed = "Completed"
+}

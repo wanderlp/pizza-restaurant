@@ -10,7 +10,12 @@ import CoreData
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello World!")
+        NavigationView {
+            List {
+                Text("Sample Order")
+            }
+            .navigationTitle("My Orders")
+        }
     }
 }
 

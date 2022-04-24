@@ -18,8 +18,26 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                Text("Sample Order")
+                ForEach(orders) { order in
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("\(order.pizzaType) - \(order.numberOfSlices) slices")
+                                .font(.headline)
+                            Text("Table \(order.tableNumber)")
+                                .font(.subheadline)
+                        }
+                        Spacer()
+                        Button(action: {
+                            print("Update order")
+                        }) {
+                            Text(order.orderStatus == .pending ? "Prepare" : "Complete")
+                                .foregroundColor(.blue)
+                        }
+                    }
+                    .frame(height: 50)
+                }
             }
+            .listStyle(PlainListStyle())
             .navigationTitle("My Orders")
             .navigationBarItems(
                 trailing: Button(

@@ -36,6 +36,17 @@ struct ContentView: View {
                     }
                     .frame(height: 50)
                 }
+                .onDelete { indexSet in
+                    for index in indexSet {
+                        viewContext.delete(orders[index])
+                    }
+                    do {
+                        try viewContext.save()
+                    }
+                    catch {
+                        print(error.localizedDescription)
+                    }
+                }
             }
             .listStyle(PlainListStyle())
             .navigationTitle("My Orders")

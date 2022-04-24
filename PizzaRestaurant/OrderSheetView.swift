@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct OrderSheetView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    
     let pizzaTypes = ["Pizza Marghetita", "Greek Pizza", "Pizza Supreme", "Pizza California", "New York Pizza"]
 
     @State var selectedPizzaIndex = 1
@@ -34,7 +36,21 @@ struct OrderSheetView: View {
                 }
                 
                 Button(action: {
-                    print("Save de order!")
+                    guard self.tableNumber != "" else { return }
+                    let newOrder = Order(context: viewContext)
+                    newOrder.pizzaType = self.pizzaTypes[self.selectedPizzaIndex]
+                    newOrder.orderStatus = .pending
+                    newOrder.tableNumber = self.tableNumber
+                    newOrder.numberOfSlices = Int16(self.numberOfSlices)
+                    newOrder.id = UUID()
+                    
+                    do {
+                        try viewContext.save()
+                        print("Order saved.")
+                    }
+                    catch {
+                        print(error.localizedDescription)
+                    }
                 }) {
                     Text("Add Order")
                 }
@@ -47,5 +63,6 @@ struct OrderSheetView: View {
 struct OrderSheetView_Previews: PreviewProvider {
     static var previews: some View {
         OrderSheetView()
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

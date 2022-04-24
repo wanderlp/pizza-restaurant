@@ -9,6 +9,7 @@ import SwiftUI
 
 struct OrderSheetView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.presentationMode) var presentationMode
     
     let pizzaTypes = ["Pizza Marghetita", "Greek Pizza", "Pizza Supreme", "Pizza California", "New York Pizza"]
 
@@ -47,6 +48,7 @@ struct OrderSheetView: View {
                     do {
                         try viewContext.save()
                         print("Order saved.")
+                        presentationMode.wrappedValue.dismiss()
                     }
                     catch {
                         print(error.localizedDescription)

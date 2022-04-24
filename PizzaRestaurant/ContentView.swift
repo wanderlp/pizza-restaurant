@@ -28,7 +28,7 @@ struct ContentView: View {
                         }
                         Spacer()
                         Button(action: {
-                            print("Update order")
+                            updateOrder(order: order)
                         }) {
                             Text(order.orderStatus == .pending ? "Prepare" : "Complete")
                                 .foregroundColor(.blue)
@@ -52,6 +52,14 @@ struct ContentView: View {
             .sheet(isPresented: $showOrderSheet) {
                 OrderSheetView()
             }
+        }
+    }
+    
+    func updateOrder(order: Order) {
+        let newStatus = order.orderStatus == .pending ? Status.preparing : .completed
+        viewContext.performAndWait {
+            order.orderStatus = newStatus
+            try? viewContext.save()
         }
     }
 }
